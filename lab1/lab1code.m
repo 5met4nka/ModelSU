@@ -2,8 +2,6 @@ clc
 clear
 close
 
-привет 
-
 R0 = 4;
 In = 100;
 Un = In * R0;
