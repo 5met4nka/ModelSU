@@ -6,8 +6,6 @@ R0 = 4;
 In = 100;
 Un = In * R0;
 
-еще раз
-
 Un = Uv;
 Rv = Uv / Iv;
 
