@@ -98,3 +98,4 @@ legend('F(т)', 'p(т) n=3', 'p(т) n=5');
 title('');
 xlabel('т'); ylabel('F,p');
 grid on;
+Сау, брат!
