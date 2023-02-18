@@ -1,24 +1,27 @@
 % определение констант и присвоение им значений
-rw = 97.2;
-rja = 0.05;
+r_V = 97.2;
+r_JA = 0.05;
 w = 3000;
-ce = 130;
-cm = 120;
-R0b = 0; % ~~~~~~~~~~~~
-Fib = 0.01;
-Wb = 100;
-igb = 100;
-Mvb = 300;
-Uvb = 0; % ~~~~~~~~~~~~
+L_JA = 0.03;
+R0 = 4;
+c_e = 130;
+c_M = 120;
+Fi_n = 0.01;
+Fi_0 = Fi_n * 0.1;
+J = 1.2;
+w_n = 100;
+i_N = 100;
+M_VN = 300;
+U_VN = 400; % 1 лр
 
 global a11; a11 = 1;
-global a21; a21 = ce*Fib*Wb;
+global a21; a21 = c_e*Fi_0*w_n;
 
-global a22; a22 = igb*rja;
-global a23; a23 = igb*R0b;
+global a22; a22 = i_N*r_JA;
+global a23; a23 = i_N*R0;
 
-global a31; a31 = Mvb;
-global a32; a32 = cm*Fib*igb;
+global a31; a31 = M_VN;
+global a32; a32 = c_M*Fi_0*i_N;
 
 % определение аппроксимирующего полинома
 global p;
