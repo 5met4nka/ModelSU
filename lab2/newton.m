@@ -8,28 +8,17 @@ function [x] = newton(F,G,x0,u,e)
 %          k+1  k      k     k
 %
 %         x =x0;   |f(x   ,u)| < e
-%          0           k+1   
-%
-%   
-%                    x=newton(F,G,x0,u,e)
+%          0           k+1
 %
 %         F - name of function which calculates y=f(x,u) (should be written - 'F')
-%              function y=F(x,u) have following input variables:
-%              x -  argument (vector column);
-%              u - parameter's vector (vector column)
-%              function output is y (column)
-%         G -  name of function which calculates gradient f by x (written as 'G')
-%              function g=G(x,u) have following input variables:
-%              x -  argument (vector column);
-%              u - parameter's vector (vector column)
-%         x0 - initial condition;
-%         u  - parameter's vector (vector column)
-%         e  - precision (number)
-%
-%
-%
-%         23.08.91 
-%
+%             function y=F(x,u) have following input variables:
+%         G - name of function which calculates gradient f by x (written as 'G')
+%             function g=G(x,u) have following input variables:
+%         x - argument (vector column);
+%         u - parameter's vector (vector column)
+%        x0 - initial condition;
+%         e - precision (number)
+
     t=0;
     y=feval(F,x0,u);
     x=x0;
