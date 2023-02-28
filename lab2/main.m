@@ -1,8 +1,24 @@
-global r_JA; r_JA = 0.05;
+% очистка экрана и рабочего пространства
+
+clc;
+clear;
+close;
+
+global r_V; r_V = 97.2;
+global r_YA; r_YA = 0.05;
 global w; w = 3000;
-global C_e; C_e = 130;
-global C_M; C_M = 120;
+global L_YA; L_YA = 0.03;
+global R_0; R_0 = 4;
+global c_e; c_e = 130;
+global c_M; c_M = 120;
+global J; J = 1.2;
+
+global Fi_N; Fi_N = 0.01;
+global omega_N; omega_N = 100;
 global i_N; i_N = 100;
+global M_VN; M_VN = 300;
+global U_VN; U_VN = 400; % лр №1
+
 global p; p = [-0.0014 0.1628 -0.4707 0.4731 -0.0316 0];
 
 % u1 = var, u2 = const
