@@ -19,6 +19,9 @@ global i_N; i_N = 100;
 global M_VN; M_VN = 300;
 global U_VN; U_VN = 400; % лр №1
 
+global i_VN; i_VN = U_VN / r_V;
+global i_GN; i_GN = i_N + i_VN
+
 global p; p = [-0.0014 0.1628 -0.4707 0.4731 -0.0316 0];
 
 % u1 = var, u2 = const
