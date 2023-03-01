@@ -25,12 +25,12 @@ global i_GN; i_GN = i_N + i_VN
 global p; p = [-0.0014 0.1628 -0.4707 0.4731 -0.0316 0];
 
 % u1 = var, u2 = const
-u1 = 0.2:0.02:1.2;
+u1 = 0.2:0.2:1.2;
 u_1 = [u1; ones(size(u1)); ones(size(u1))];
 x0 = [1; 1; 1];
 xx = [];
 for i = 1:length(u1)
-    x = newton('fun_F', 'fun_G', x0, u_1(:,i), 0.0001);
+    x = newton('fun_F', 'fun_G', x0, u_1(:,i), 0.001);
     xx = [xx x];
     x0 = x;
 end
@@ -63,12 +63,12 @@ legend('Ф_н', 'i_гн', 'w_н');
 hold off;
 
 % u1 = const, u2 = var
-u2 = 0.2:0.02:1.2;
+u2 = 0.2:0.2:1.2;
 u_2 = [ones(size(u2)); u2; ones(size(u2))];
 x0 = [1; 1; 1];
 xx = [];
 for i = 1:length(u2)
-    x = newton('fun_F', 'fun_G', x0, u_2(:,i), 0.0001);
+    x = newton('fun_F', 'fun_G', x0, u_2(:,i), 0.001);
     xx = [xx x];
     x0 = x;
 end
