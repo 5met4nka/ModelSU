@@ -1,4 +1,29 @@
-function g =fun_G(x,u)
-p = [0.0652531464530903 0 -0.417793814270038 0 1.24716103354177 0];
-g=[-(p(1)*5*x(1)^4 + p(3)*3*x(1)^2 + p(5)), 0, 0; x(3), -(1+u(3)), x(1); -x(2), -x(1), 0];
-end
+% вычисление значений матрицы частных производных G(x, u)
+function g = fun_G(x,u)
+
+    global r_V;
+    global r_YA;
+    global w;
+    global L_YA;
+    global R_0;
+    global c_e;
+    global c_M;
+    global J;
+
+    global Fi_N;
+    global omega_N;
+    global i_N;
+    global M_VN;
+    global U_VN;
+
+    global i_VN;
+    global i_GN;
+
+    global p;
+
+    g1 = [ -polyval(polyder(p./w),x(1)), 0, 0]; % polyder возвращает производную полинома 'p'
+    g2 = [c_e * omega_N * Fi_N * x(3), i_GN * r_YA, c_e * omega_N * Fi_N*x(1)];
+    g3 = [-c_M * Fi_N * i_GN * x(2), -c_M * Fi_N * i_GN * x(1), 0];
+    g = [g1; g2; g3];
+
+    end

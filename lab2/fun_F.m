@@ -1,4 +1,29 @@
-function f=fun_F(x,u)
-p = [0.0652531464530903 0 -0.417793814270038 0 1.24716103354177 0];
-f=[u(1)-(p(1)*x(1)^5 + p(3)*x(1)^3 + p(5)*x(1)); x(1)*x(3)-x(2)*(1+u(3)); u(2)-x(1)*x(2)];
-end
+% вычисление значения функции f(x, u)
+function f = fun_F(x,u)
+
+    global r_V;
+    global r_YA;
+    global w;
+    global L_YA;
+    global R_0;
+    global c_e;
+    global c_M;
+    global J;
+
+    global Fi_N;
+    global omega_N;
+    global i_N;
+    global M_VN;
+    global U_VN;
+
+    global i_VN;
+    global i_GN;
+
+    global p;
+
+    f1 = i_N * R_0 * u(2) - polyval(p./w, x(1));
+    f2 = c_e * omega_N * Fi_N * x(3) * x(1) - i_GN * r_YA * x(2) - i_N * R_0 * u(2);
+    f3 = M_VN * u(1) - c_M * Fi_N * i_GN * x(1) * x(2);
+    f = [f1; f2; f3];
+
+    end
