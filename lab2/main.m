@@ -23,10 +23,11 @@ global i_VN; i_VN = U_VN / r_V;
 global i_GN; i_GN = i_N + i_VN
 
 global p; p = [-0.0014 0.1628 -0.4707 0.4731 -0.0316 0];
+global p; p = [0.0000 -0.0316 0.4731 -0.4707 0.1628 -0.0014];
 
 % u1 = var, u2 = const
 
-u1 = 0.2:0.2:1.2;
+u1 = 1.2:-0.2:0.2;
 u_1 = [u1; ones(size(u1)); ones(size(u1))];
 x0 = [1; 1; 1];
 xx = [];
@@ -38,7 +39,7 @@ end
 
 % уменьшим на 20% u1
 
-u1_minus20 = 0.2 * 0.8:0.2 * 0.8:1.2 * 0.8;
+u1_minus20 = 1.2 * 0.8:-0.2 * 0.8:0.2 * 0.8;
 u_1_minus20 = [u1_minus20; ones(size(u1_minus20)); ones(size(u1_minus20))];
 x0_minus20 = [1; 1; 1];
 xx_minus20 = [];
@@ -48,7 +49,7 @@ for i = 1:length(u1_minus20)
     x0_minus20 = x_minus20;
 end
 
-%построение графиков х1(u1), х2(u1), х3(u1)
+% построение графиков х1(u1), х2(u1), х3(u1)
 
 figure(1);
 plot(u1, xx(1,:), 'b-', u1_minus20, xx_minus20(1,:), 'r--');
@@ -73,7 +74,7 @@ grid on;
 
 % u1 = const, u2 = var
 
-u2 = 0.2:0.2:1.2;
+u2 = 1.2:-0.2:0.2;
 u_2 = [ones(size(u2)); u2; ones(size(u2))];
 x0 = [1; 1; 1];
 xx = [];
@@ -85,7 +86,7 @@ end
 
 % уменьшим на 20% u2
 
-u2_minus20 = 0.2 * 0.8:0.2 * 0.8:1.2 * 0.8;
+u2_minus20 = 1.2 * 0.8:-0.2 * 0.8:0.2 * 0.8;
 u_2_minus20 = [ones(size(u2_minus20)); u2_minus20; ones(size(u2_minus20))];
 x0_minus20 = [1; 1; 1];
 xx_minus20 = [];
@@ -95,7 +96,7 @@ for i = 1:length(u2_minus20)
     x0_minus20 = x_minus20;
 end
 
-%построение графиков х1(u2), х2(u2), х3(u2)
+% построение графиков х1(u2), х2(u2), х3(u2)
 
 figure(4);
 plot(u2, xx(1,:), 'b-', u2_minus20, xx_minus20(1,:), 'r--');
