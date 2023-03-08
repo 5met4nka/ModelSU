@@ -55,13 +55,15 @@ plot(u1, xx(1,:), 'b-', u1_minus20, xx_minus20(1,:), 'b--');
 legend('Fi_N(M_V_N)', 'Fi_N(M_V_N*0.8)');
 xlabel('M_V_N');
 ylabel('Fi_N');
+title('Зависимость Fi_N от M_V_N')
 grid on;
 
 figure(2);
 plot(u1, xx(2,:), 'r-', u1_minus20, xx_minus20(2,:), 'r--');
 legend('i_G_N(M_V_N)', 'i_G_N(M_V_N*0.8)');
 xlabel('M_V_N');
-ylabel('i_GN');
+ylabel('i_G_N');
+title('Зависимость i_G_N от M_V_N')
 grid on;
 
 figure(3);
@@ -69,17 +71,20 @@ plot(u1, xx(3,:), 'g-', u1_minus20, xx_minus20(3,:), 'g--');
 legend('omega_N(M_V_N)', 'omega_N(M_V_N*0.8)');
 xlabel('M_V_N');
 ylabel('omega_N');
+title('Зависимость omega_N от M_V_N')
 grid on;
 
 figure(4);
 
 hold on;
+
 plot(u1, xx(1,:), 'b-', u1_minus20, xx_minus20(1,:), 'b--');
 plot(u1, xx(2,:), 'r-', u1_minus20, xx_minus20(2,:), 'r--');
 plot(u1, xx(3,:), 'g-', u1_minus20, xx_minus20(3,:), 'g--');
 legend('Fi_N(M_V_N)', 'Fi_N(M_V_N*0.8)', 'i_G_N(M_V_N)', 'i_G_N(M_V_N*0.8)', 'omega_N(M_V_N)', 'omega_N(M_V_N*0.8)');
 xlabel('M_V_N'),
-ylabel('Fi_N (синий),i_GN (красный),omega_N (зеленый)');
+ylabel('Fi_N (синий), i_G_N (красный), omega_N (зеленый)');
+title('Зависимости Fi_N, i_G_N, omega_N от M_V_N')
 grid on;
 hold off;
 
@@ -114,6 +119,7 @@ plot(u2, xx(1,:), 'b-', u2_minus20, xx_minus20(1,:), 'b--');
 legend('Fi_N(R_0_N)', 'Fi_N(R_0_N*0.8)');
 xlabel('R_0_N');
 ylabel('Fi_N');
+title('Зависимость Fi_N от R_0_N')
 grid on;
 
 figure(6);
@@ -121,6 +127,7 @@ plot(u2, xx(2,:), 'r-', u2_minus20, xx_minus20(2,:), 'r--');
 legend('i_G_N(R_0_N)', 'i_G_N(R_0_N*0.8)');
 xlabel('R_0_N');
 ylabel('i_GN');
+title('Зависимость i_G_N от R_0_N')
 grid on;
 
 figure(7);
@@ -128,16 +135,19 @@ plot(u2, xx(3,:), 'g-', u2_minus20, xx_minus20(3,:), 'g--');
 legend('omega_N(R_0_N)', 'omega_N(R_0_N*0.8)');
 xlabel('R_0_N');
 ylabel('omega_N');
+title('Зависимость omega_N от R_0_N')
 grid on;
 
 figure(8);
 
 hold on;
+
 plot(u2, xx(1,:), 'b-', u2_minus20, xx_minus20(1,:), 'b--');
 plot(u2, xx(2,:), 'r-', u2_minus20, xx_minus20(2,:), 'r--');
 plot(u2, xx(3,:), 'g-', u2_minus20, xx_minus20(3,:), 'g--');
 legend('Fi_N(R_0_N)', 'Fi_N(R_0_N*0.8)', 'i_G_N(R_0_N)', 'i_G_N(R_0_N*0.8)', 'omega_N(R_0_N)', 'omega_N(R_0_N*0.8)');
 xlabel('R_0_N'),
-ylabel('Fi_N (синий),i_GN (красный),omega_N (зеленый)');
+ylabel('Fi_N (синий), i_G_N (красный), omega_N (зеленый)');
+title('Зависимости Fi_N, i_G_N, omega_N от R_0_N')
 grid on;
 hold off;
