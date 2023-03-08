@@ -8,7 +8,7 @@ global r_V; r_V = 97.2;
 global r_YA; r_YA = 0.05;
 global w; w = 3000;
 global L_YA; L_YA = 0.03;
-global R_0; R_0 = 4;
+global R_0N; R_0N = 4;
 global c_e; c_e = 130;
 global c_M; c_M = 120;
 global J; J = 1.2;
@@ -23,9 +23,8 @@ global i_VN; i_VN = U_VN / r_V;
 global i_GN; i_GN = i_N + i_VN
 
 global p; p = [-0.0014 0.1628 -0.4707 0.4731 -0.0316 0];
-global p; p = [0.0000 -0.0316 0.4731 -0.4707 0.1628 -0.0014];
 
-% u1 = var, u2 = const
+% M_VN = var, R_0N = const
 
 u1 = 1.2:-0.2:0.2;
 u_1 = [u1; ones(size(u1)); ones(size(u1))];
@@ -37,42 +36,54 @@ for i = 1:length(u1)
     x0 = x;
 end
 
-% уменьшим на 20% u1
+% уменьшим на 20% M_VN
 
 u1_minus20 = 1.2 * 0.8:-0.2 * 0.8:0.2 * 0.8;
 u_1_minus20 = [u1_minus20; ones(size(u1_minus20)); ones(size(u1_minus20))];
 x0_minus20 = [1; 1; 1];
 xx_minus20 = [];
 for i = 1:length(u1_minus20)
-    x_minus20 = newton('fun_F', 'fun_G', x0_minus20, u_1(:,i), 0.001);
+    x_minus20 = newton('fun_F', 'fun_G', x0_minus20, u_1_minus20(:,i), 0.001);
     xx_minus20 = [xx_minus20 x_minus20];
     x0_minus20 = x_minus20;
 end
 
-% построение графиков х1(u1), х2(u1), х3(u1)
+% построение графиков Fi_N(M_V_N), i_GN(M_V_N), omega_N(M_V_N)
 
 figure(1);
-plot(u1, xx(1,:), 'b-', u1_minus20, xx_minus20(1,:), 'r--');
-legend('Ф_н(M_В)', 'Ф_н(M_В*0.8)');
-xlabel('M_В');
-ylabel('Ф_н');
+plot(u1, xx(1,:), 'b-', u1_minus20, xx_minus20(1,:), 'b--');
+legend('Fi_N(M_V_N)', 'Fi_N(M_V_N*0.8)');
+xlabel('M_V_N');
+ylabel('Fi_N');
 grid on;
 
 figure(2);
-plot(u1, xx(2,:), 'b-', u1_minus20, xx_minus20(2,:), 'r--');
-legend('i_гн(M_В)', 'i_гн(M_В*0.8)');
-xlabel('M_В');
-ylabel('i_гн');
+plot(u1, xx(2,:), 'r-', u1_minus20, xx_minus20(2,:), 'r--');
+legend('i_G_N(M_V_N)', 'i_G_N(M_V_N*0.8)');
+xlabel('M_V_N');
+ylabel('i_GN');
 grid on;
 
 figure(3);
-plot(u1, xx(3,:), 'b-', u1_minus20, xx_minus20(3,:), 'r--');
-legend('w_н(M_В)', 'w_н(M_В*0.8)');
-xlabel('M_В'),
-ylabel('w_н');
+plot(u1, xx(3,:), 'g-', u1_minus20, xx_minus20(3,:), 'g--');
+legend('omega_N(M_V_N)', 'omega_N(M_V_N*0.8)');
+xlabel('M_V_N');
+ylabel('omega_N');
 grid on;
 
-% u1 = const, u2 = var
+figure(4);
+
+hold on;
+plot(u1, xx(1,:), 'b-', u1_minus20, xx_minus20(1,:), 'b--');
+plot(u1, xx(2,:), 'r-', u1_minus20, xx_minus20(2,:), 'r--');
+plot(u1, xx(3,:), 'g-', u1_minus20, xx_minus20(3,:), 'g--');
+legend('Fi_N(M_V_N)', 'Fi_N(M_V_N*0.8)', 'i_G_N(M_V_N)', 'i_G_N(M_V_N*0.8)', 'omega_N(M_V_N)', 'omega_N(M_V_N*0.8)');
+xlabel('M_V_N'),
+ylabel('Fi_N (синий),i_GN (красный),omega_N (зеленый)');
+grid on;
+hold off;
+
+% M_VN = const, R_0N = var
 
 u2 = 1.2:-0.2:0.2;
 u_2 = [ones(size(u2)); u2; ones(size(u2))];
@@ -84,7 +95,7 @@ for i = 1:length(u2)
     x0 = x;
 end
 
-% уменьшим на 20% u2
+% уменьшим на 20% R_0N
 
 u2_minus20 = 1.2 * 0.8:-0.2 * 0.8:0.2 * 0.8;
 u_2_minus20 = [ones(size(u2_minus20)); u2_minus20; ones(size(u2_minus20))];
@@ -96,25 +107,37 @@ for i = 1:length(u2_minus20)
     x0_minus20 = x_minus20;
 end
 
-% построение графиков х1(u2), х2(u2), х3(u2)
-
-figure(4);
-plot(u2, xx(1,:), 'b-', u2_minus20, xx_minus20(1,:), 'r--');
-legend('Ф_н(R_0)', 'Ф_н(R_0*0.8)');
-xlabel('R_0');
-ylabel('Ф_н');
-grid on;
+% построение графиков Fi_N(R_0N), i_GN(R_0N), omega_N(R_0N)
 
 figure(5);
-plot(u2, xx(2,:), 'b-', u2_minus20, xx_minus20(2,:), 'r--');
-legend('i_гн(R_0)', 'i_гн(R_0*0.8)');
-xlabel('R_0');
-ylabel('i_гн');
+plot(u2, xx(1,:), 'b-', u2_minus20, xx_minus20(1,:), 'b--');
+legend('Fi_N(R_0_N)', 'Fi_N(R_0_N*0.8)');
+xlabel('R_0_N');
+ylabel('Fi_N');
 grid on;
 
 figure(6);
-plot(u2, xx(3,:), 'b-', u2_minus20, xx_minus20(3,:), 'r--');
-legend('w_н(R_0)', 'w_н(R_0*0.8)');
-xlabel('R_0');
-ylabel('w_н');
+plot(u2, xx(2,:), 'r-', u2_minus20, xx_minus20(2,:), 'r--');
+legend('i_G_N(R_0_N)', 'i_G_N(R_0_N*0.8)');
+xlabel('R_0_N');
+ylabel('i_GN');
 grid on;
+
+figure(7);
+plot(u2, xx(3,:), 'g-', u2_minus20, xx_minus20(3,:), 'g--');
+legend('omega_N(R_0_N)', 'omega_N(R_0_N*0.8)');
+xlabel('R_0_N');
+ylabel('omega_N');
+grid on;
+
+figure(8);
+
+hold on;
+plot(u2, xx(1,:), 'b-', u2_minus20, xx_minus20(1,:), 'b--');
+plot(u2, xx(2,:), 'r-', u2_minus20, xx_minus20(2,:), 'r--');
+plot(u2, xx(3,:), 'g-', u2_minus20, xx_minus20(3,:), 'g--');
+legend('Fi_N(R_0_N)', 'Fi_N(R_0_N*0.8)', 'i_G_N(R_0_N)', 'i_G_N(R_0_N*0.8)', 'omega_N(R_0_N)', 'omega_N(R_0_N*0.8)');
+xlabel('R_0_N'),
+ylabel('Fi_N (синий),i_GN (красный),omega_N (зеленый)');
+grid on;
+hold off;
