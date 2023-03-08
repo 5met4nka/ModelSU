@@ -22,6 +22,8 @@ global U_VN; U_VN = 400; % лр №1
 global i_VN; i_VN = U_VN / r_V;
 global i_GN; i_GN = i_N + i_VN
 
+global F_N; F_N = i_VN * w;
+
 global p; p = [-0.0014 0.1628 -0.4707 0.4731 -0.0316 0];
 
 % M_VN = var, R_0N = const
@@ -126,7 +128,7 @@ figure(6);
 plot(u2, xx(2,:), 'r-', u2_minus20, xx_minus20(2,:), 'r--');
 legend('i_G_N(R_0_N)', 'i_G_N(R_0_N*0.8)');
 xlabel('R_0_N');
-ylabel('i_GN');
+ylabel('i_G_N');
 title('Зависимость i_G_N от R_0_N')
 grid on;
 
