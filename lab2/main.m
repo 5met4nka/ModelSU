@@ -20,7 +20,7 @@ global M_VN; M_VN = 300;
 global U_VN; U_VN = 400; % лр №1
 
 global i_VN; i_VN = U_VN / r_V;
-global i_GN; i_GN = i_N + i_VN
+global i_GN; i_GN = i_N + i_VN;
 
 global F_N; F_N = i_VN * w;
 
