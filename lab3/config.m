@@ -5,19 +5,19 @@ clear;
 close;
 
 r_V = 97.2;
-r_YA = 1.39;
-w = 8600;
-L_YA = 0.02;
+r_YA = 0.05;
+w = 3000;
+L_YA = 0.03;
 R_0N = 4;
-c_e = 300;
-c_M = 300;
-J = 0.12;
+c_e = 130;
+c_M = 120;
+J = 1.2;
 
-Fi_N = 0.005;
+Fi_N = 0.01;
 omega_N = 100;
-i_N = 30;
-M_VN = 50;
-U_VN = 220;
+i_N = 100;
+M_VN = 300;
+U_VN = 400;
 
 i_VN = U_VN / r_V;
 i_GN = i_N + i_VN;
