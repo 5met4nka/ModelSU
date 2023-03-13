@@ -32,15 +32,19 @@ a22=1/(Lya*ig);
 a33=1/(J*w_n);
 
 %Матрицы
-A = [(-a11*a2*1-a11*a3)*polyval(polyder(p_5),flow), a11*a1*1, 0;
-    a22*a4*W+a22*a2*polyval(polyder(p_5),flow)*1, -a22*a5-a22*a1*1, a22*a4*flow;
-    -a33*a7*i, -a33*a7*flow, 0];
-B = [0 a11*a1*i-a11*a2*polyval(p_5,flow);
-    0 a22*a1*i+a22*a2*polyval(p_5, flow);
-    a33*a6 0];
-C = [a8*polyval(polyder(p_5), flow), 0, 0;
-    polyval(polyder(p_5), flow), 0, 0];
+A = [(-a11*a2*1-a11*a3)*polyval(polyder(p_5),flow),   a11*a1*1,          0;
+       a22*a4*W+a22*a2*polyval(polyder(p_5),flow)*1,  -a22*a5-a22*a1*1,  a22*a4*flow;
+      -a33*a7*i,                                      -a33*a7*flow,      0];
+
+B = [0       a11*a1*i-a11*a2*polyval(p_5,flow);
+     0       a22*a1*i+a22*a2*polyval(p_5, flow);
+     a33*a6  0];
+
+C = [a8*polyval(polyder(p_5), flow),  0,  0;
+     polyval(polyder(p_5), flow),     0,  0];
+
 D = [0, 0; 0, 0];
+
 simulate();
 XP = poly(A);
 disp(XP);

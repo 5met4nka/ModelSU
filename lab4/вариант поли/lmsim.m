@@ -1,4 +1,4 @@
-function [result_x]=lsim(a,b,c,d,t,x0,u)
+function [result_x]=lmsim(a,b,c,d,t,x0,u)
     h=t(2)-t(1);
     [m,n]=size(a);
     [m,nb]= size(b);
