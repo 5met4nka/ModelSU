@@ -1,0 +1,42 @@
+function simulate()
+    global flow i W
+    x0 = [flow, i, W];
+    x00 = [0, 0, 0];
+    u = [1.1, 1];
+    Flinear(x0, x00, u); 
+    u = [1, 1.1];
+    Flinear(x0, x00, u);
+    u = [1, 1];
+    Flinear(x0, x00, u);
+    u = [1.3, 1];
+    Flinear(x0, x00, u); 
+    u = [1, 1.3];
+    Flinear(x0, x00, u);
+    u = [1.1, 1.1];
+    Flinear(x0, x00, u);
+    u = [1, 1];
+    x0 = [1.1*flow, i, W];
+    x00 = [0.1*flow, 0, 0];
+    Flinear(x0, x00, u); 
+    x0 = [flow, 1.1*i, W];
+    x00 = [0, 0.1*i, 0];
+    Flinear(x0, x00, u); 
+    x0 = [flow, i, 1.1*W];
+    x00 = [0, 0, 0.1*W];
+    Flinear(x0, x00, u); 
+    x0 = [1.3*flow, i, W];
+    x00 = [0.3*flow, 0, 0];
+    Flinear(x0, x00, u); 
+    x0 = [flow, 1.3*i, W];
+    x00 = [0, 0.3*i, 0];
+    Flinear(x0, x00, u); 
+    x0 = [flow, i, 1.3*W];
+    x00 = [0, 0, 0.3*W];
+    Flinear(x0, x00, u); 
+    x0 = [1.3*flow, 1.3*i, W];
+    x00 = [0.3*flow, 0.3*i, 0];
+    Flinear(x0, x00, u); 
+    x0 = [1.3*flow, i, 1.3*W];
+    x00 = [0.3*flow, 0, 0.3*W];
+    Flinear(x0, x00, u);
+end
