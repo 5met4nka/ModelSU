@@ -28,5 +28,4 @@ function [x] = newton(F,G,x0,u,e)
         y=feval(F,x,u);
         clc,disp(y)
     end
-
-    end
+end

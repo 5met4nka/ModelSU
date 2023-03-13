@@ -23,9 +23,9 @@ function g = fun_G(x,u)
 
     global p;
 
-    g1 = [-polyval(polyder(p),x(1)), 0, 0]; % polyder возвращает производную полинома 'p'
-    g2 = [(c_e * omega_N * Fi_N) * x(3), (-i_GN * r_YA), (c_e * omega_N * Fi_N) * x(1)];
-    g3 = [(-c_M * Fi_N * i_GN) * x(2), (-c_M * Fi_N * i_GN) * x(1), 0];
-    g = [g1; g2; g3];
+    g1 = [ -polyval(polyder(p),x(1)),       0,                             0];
+    g2 = [ (c_e * omega_N * Fi_N) * x(3),   (-i_GN * r_YA),                (c_e * omega_N * Fi_N) * x(1)];
+    g3 = [ (-c_M * Fi_N * i_GN) * x(2),     (-c_M * Fi_N * i_GN) * x(1),   0];
+    g  = [g1; g2; g3];
 
-    end
+end
